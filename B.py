@@ -2,6 +2,8 @@
 
 """
 
+from tests.utils import debug
+
 
 def main():
     pass
