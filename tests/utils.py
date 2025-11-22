@@ -5,10 +5,6 @@ from contextlib import redirect_stdout
 MAX_TIME = 0.1
 
 
-def debug(*values, **kwargs):
-    print(*values, file=sys.stderr, **kwargs)
-
-
 def parse_tests(tests_string: str | None):
     """
     Tests must be in the following format:

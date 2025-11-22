@@ -2,16 +2,17 @@ test:
 	@clear
 	@PYTHONPATH=. pytest
 
+OPT := --quiet
 A B C D E F G:
 	@clear
 	@echo '[ $@ ]'
-	@PYTHONPATH=. pytest -q tests/test_$@.py
+	@PYTHONPATH=. pytest $(OPT) tests/test_$@.py
 
 a b c d e f g:
 	@clear
 	@upper=$(shell echo $@ | tr a-z A-Z); \
 	echo "[ $$upper ]"; \
-	PYTHONPATH=. pytest -q tests/test_$$upper.py
+	PYTHONPATH=. pytest $(OPT) tests/test_$$upper.py
 
 clean:
 	cat template.py > A.py
@@ -26,4 +27,6 @@ clean:
 	> 3
 	> 4
 
-.PHONY: test, A, B, C, D, E, F, G, clean
+fclean: clean
+
+.PHONY: test, A, B, C, D, E, F, G, clean, fclean
