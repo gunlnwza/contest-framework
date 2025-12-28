@@ -1,18 +1,10 @@
-test:
-	@clear
-	@PYTHONPATH=. pytest
+all:
 
-OPT := --quiet
-A B C D E F G:
+uc = $(shell echo $(1) | tr a-z A-Z)
+%:
 	@clear
-	@echo '[ $@ ]'
-	@PYTHONPATH=. pytest $(OPT) tests/test_$@.py
-
-a b c d e f g:
-	@clear
-	@upper=$(shell echo $@ | tr a-z A-Z); \
-	echo "[ $$upper ]"; \
-	PYTHONPATH=. pytest $(OPT) tests/test_$$upper.py
+	@echo '[' $(call uc,$@) ']'
+	@PYTHONPATH=. poetry run pytest --quiet tests/test_$(call uc,$@).py
 
 clean:
 	cat template.py > A.py
@@ -29,4 +21,6 @@ clean:
 
 fclean: clean
 
-.PHONY: test, A, B, C, D, E, F, G, clean, fclean
+re:
+
+.PHONY: all clean fclean re
