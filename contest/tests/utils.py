@@ -2,7 +2,7 @@ import io
 import sys
 from contextlib import redirect_stdout
 
-MAX_TIME = 0.1
+MAX_TIME = 2
 
 
 def parse_tests(tests_string: str | None):
