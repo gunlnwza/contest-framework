@@ -2,7 +2,7 @@ import io
 import sys
 from contextlib import redirect_stdout
 
-MAX_TIME = 2
+DEFAULT_MAX_TIME = 2
 
 
 def parse_tests(tests_string: str | None):
@@ -10,7 +10,7 @@ def parse_tests(tests_string: str | None):
     Tests must be in the following format:
     ```
     Input
-    ==-
+    ===
     Output
 
     ...

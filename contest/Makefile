@@ -16,6 +16,6 @@ clean:
 	@for f in $(SCRIPT_FILES); do cp template/script.py $$f; done
 	@touch $(EMPTY_FILES)
 
-	@echo '🧹 Cleaned'
+	@echo 'Contest directory cleaned'
 
 .PHONY: all test clean
