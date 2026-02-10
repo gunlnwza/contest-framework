@@ -1,9 +1,14 @@
 all: test
 
+
 OPT :=
 test:
 	@clear
+	@echo '[ submission.py ]'
 	@PYTHONPATH=. pytest --quiet $(OPT)
+
+submission: test
+
 
 TEMPLATE_DIR := ../template
 KEEP_FILES := Makefile __init__.py
@@ -18,5 +23,6 @@ clean:
 	@touch $(EMPTY_FILES)
 
 	@echo 'Practice directory cleaned'
+
 
 .PHONY: all test clean

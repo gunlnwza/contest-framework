@@ -1,9 +1,17 @@
 all: test
 
+
 OPT :=
 test:
 	@clear
-	@PYTHONPATH=. pytest --quiet $(OPT)
+	@PYTHONPATH=. pytest $(OPT)
+
+uc = $(shell echo $(1) | tr a-z A-Z)
+%:
+	@clear
+	@echo '[' "$(call uc,$@)".py ']'
+	@PYTHONPATH=. poetry run pytest --quiet $(OPT) tests/test_$(call uc,$@).py
+
 
 TEMPLATE_DIR := ../template
 KEEP_FILES := Makefile __init__.py
@@ -18,5 +26,6 @@ clean:
 	@touch $(EMPTY_FILES)
 
 	@echo 'Contest directory cleaned'
+
 
 .PHONY: all test clean
