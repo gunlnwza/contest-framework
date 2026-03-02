@@ -1,8 +1,12 @@
 import io
 import sys
+import json
+from pathlib import Path
 from contextlib import redirect_stdout
 
-DEFAULT_MAX_TIME = 2
+with open(Path(__file__).parent / "config.json") as config:
+    data = json.load(config)
+    DEFAULT_MAX_TIME = data["DEFAULT_MAX_TIME"]
 
 
 def parse_tests(tests_string: str | None):
@@ -13,11 +17,11 @@ def parse_tests(tests_string: str | None):
     ===
     Output
 
-    ...
-
     Input
     ===
     Output
+
+    ...
     ```
     """
     if not tests_string:
